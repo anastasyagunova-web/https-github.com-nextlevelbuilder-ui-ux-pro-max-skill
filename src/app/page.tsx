@@ -17,19 +17,13 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   const [lang, setLang] = useState<"en" | "es">("en");
-
   useEffect(() => {
     const stored = localStorage.getItem("revo-lang") as "en" | "es" | null;
     if (stored) setLang(stored);
   }, []);
-
-  const handleSetLang = (l: "en" | "es") => {
-    setLang(l);
-    localStorage.setItem("revo-lang", l);
-  };
-
+  const handleSetLang = (l: "en" | "es") => { setLang(l); localStorage.setItem("revo-lang", l); };
   return (
-    <main className="bg-[#050508] min-h-screen">
+    <main style={{ background: "#050508", minHeight: "100vh" }}>
       <CustomCursor />
       <Navbar lang={lang} setLang={handleSetLang} />
       <Hero lang={lang} />
